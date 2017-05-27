@@ -1,0 +1,15 @@
+h1 {
+  color: blue;
+}
+.error {
+  color: red;
+}
+.info {
+  color: green;
+}
+.spacebtn {
+  margin-top: 15px;
+}
+.right {
+  margin-left: 90%;
+}

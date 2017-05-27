@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Lets Chat</title>
+        {% include './cdn.html' %}
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
+    </head>
+    <body>
+        {% if messages %}
+        <ul class="container messages">
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        <div class="container row">
+            <h1 class="welcome">Welcome! Register</h1>
+            <form action='/register' class="container col s6" method="POST">
+                {% csrf_token %}
+                <div class="row">
+                  <div class="input-field col s6">
+                    <input type="text" class="validate" name="name" placeholder="Name">
+                  </div>
+                  <div class="input-field col s6">
+                    <input type="text" class="validate" name="username" placeholder="username">
+                  </div>
+                </div>
+                <div class="row">
+              <div class="input-field col s12">
+                  <small>*Password should be at least 8 characters</small>
+                <input type="password" class="validate" name="password" placeholder="Password">
+              </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input type="password" class="validate" name="confirm_password" placeholder="Confirm Password">
+                </div>
+              </div>
+              <input type="submit" class="waves-effect waves-light btn" value="Register" name="register">
+            </form>
+        </div>
+        <div class="container row">
+          <h1 class="welcome">Log in</h1>
+          <form action="/login" class="container col s6" method="POST">
+               {% csrf_token %}
+            <div class="row">
+              <div class="input-field col s12">
+                <input type="text" class="validate" name="username" placeholder="Username">
+              </div>
+            </div>
+              <div class="row">
+                <div class="input-field col s12">
+                  <input type="password" class="validate" name="password" placeholder="Password">
+                </div>
+              </div>
+            <input type="submit" class="waves-effect waves-light btn" value="Log in" name="login">
+          </form>
+        </div>
+    </body>
+</html>
